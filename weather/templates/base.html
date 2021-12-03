@@ -38,7 +38,7 @@
               
               
             </ul>
-            <form action="{% url 'home' %}" class="d-flex" method="POST"><!--Con la content tag url no hace falta colocarle extensión al template que debe llamar-->>
+            <form action="{% url 'home' %}" class="d-flex" method="POST"><!--Con la content tag url no hace falta colocarle extensión al template que debe llamar-->
               {% csrf_token %}
               <input class="form-control me-2" type="search" placeholder="Introduzca el Zip Code" aria-label="Search" name="zipcode">
               <button class="btn btn-outline-secondary" type="submit">Busqueda</button>
