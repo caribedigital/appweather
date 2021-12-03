@@ -1,7 +1,61 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!--el condicional de la variable zipcode que recupera lo enviado por el formulario y ejecuta la variable zipcode-->>
+{% if zipcode %}
+        {{ zipcode }} <!--recupera y muestra en el html la consulta-->>
+{% endif %}
 
-<h1>!!!!Hello Home!!!!</h1>
+<!--Condicional if interpolada que toma lo enviado desde el formulario y lo muestra en el template-->
+
+{% if api %}  
+    
+    {% if api == "Error..." %}<!--Condicional if vinculado al Exception en el views home-->
+        Hubo Un Error, Intente de Nuevo
+    {% else %}
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5 {{ category_color }}"><!--Pasa la categoria para el cambio de color-->
+          <h1 class="display-5 fw-bold">{{ api.0.Category.Name }}</h1>
+          <p class="col-md-8 fs-4">Zona: {{ api.0.ReportingArea }} Calidad del Aire: {{ api.0.AQI }} </p>
+          
+         <p>{{ category_description }}</p> <!--recupera la descripción de cada categoria-->
+        </div>
+      
+    </div>
+   {% endif %}
+{% endif %}
+      
+
+
+<!--<br>  
+<br>
+<h1>Data 1</h1>
+Fecha de Observaci&oacute;n: {{ api.1.DateObserved }} <br>
+Hora de Observaci&oacute;n: {{ api.1.HourObserved }} <br>
+Zona de tiempo: {{ api.1.LocalTimeZone }} <br>
+&Aacute;rea del Reporte: {{ api.1.ReportingArea }} <br>
+C&oacute;digo de estado: {{ api.1.StateCode }} <br>
+Latitud: {{ api.1.Latitude }} <br>
+Longitud: {{ api.1.Longitude }} <br>
+Par&aacute;metro Nombre: {{ api.1.ParameterName }} <br>
+Calidad del Aire: {{ api.1.AQI }} <br>
+N&uacute;mero de Categor&iacute;a: {{ api.1.Category.Number }} <br>
+Tipo de Categor&iacute;a: {{ api.1.Category.Name }} <br>-->
+
+<!--<br>
+<br>
+<h1>Data 2</h1>
+Fecha de Observaci&oacute;n: {{ api.2.DateObserved }} <br>
+Hora de Observaci&oacute;n: {{ api.2.HourObserved }} <br>
+Zona de tiempo: {{ api.2.LocalTimeZone }} <br>
+&Aacute;rea del Reporte: {{ api.2.ReportingArea }} <br>
+C&oacute;digo de estado: {{ api.2.StateCode }} <br>
+Latitud: {{ api.2.Latitude }} <br>
+Longitud: {{ api.2.Longitude }} <br>
+Par&aacute;metro Nombre: {{ api.2.ParameterName }} <br>
+Calidad del Aire: {{ api.2.AQI }} <br>
+N&uacute;mero de Categor&iacute;a: {{ api.2.Category.Number }} <br>
+Tipo de Categor&iacute;a: {{ api.2.Category.Name }} <br>-->
 
 {% endblock %}
